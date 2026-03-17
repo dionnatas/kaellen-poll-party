@@ -39,7 +39,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: url('images/principal_kaellen.png') no-repeat center center;
+    background: url('images/principal_kaellen.webp') no-repeat center center;
     background-size: cover;
     cursor: pointer;
     transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);

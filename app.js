@@ -338,22 +338,22 @@ function initFruitRain() {
     if (!container) return;
 
     const fruitSrcs = [
-        'images/drop/amora.png',
-        'images/drop/banana.png',
-        'images/drop/cocos.png',
-        'images/drop/estrela-brilho.png',
-        'images/drop/flor-brilhante.png',
-        'images/drop/kiwi.png',
-        'images/drop/morango-top.png',
-        'images/drop/morangos.png',
-        'images/drop/pessego.png',
-        'images/drop/rosa-top.png',
-        'images/drop/tangerina.png',
-        'images/drop/uellow-orange.png',
-        'images/drop/yellow-orange2.png',
-        'images/drop/flor.png',
-        'images/drop/booble-brilho.png',
-        'images/drop/limao.png'
+        'images/drop/amora.webp',
+        'images/drop/banana.webp',
+        'images/drop/cocos.webp',
+        'images/drop/estrela-brilho.webp',
+        'images/drop/flor-brilhante.webp',
+        'images/drop/kiwi.webp',
+        'images/drop/morango-top.webp',
+        'images/drop/morangos.webp',
+        'images/drop/pessego.webp',
+        'images/drop/rosa-top.webp',
+        'images/drop/tangerina.webp',
+        'images/drop/uellow-orange.webp',
+        'images/drop/yellow-orange2.webp',
+        'images/drop/flor.webp',
+        'images/drop/booble-brilho.webp',
+        'images/drop/limao.webp'
     ];
 
     const maxOpacity = 0.35;
