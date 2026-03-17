@@ -1,0 +1,1076 @@
+/* ===== 15 Anos da Kaellen — Styles ===== */
+
+/* --- RESET --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #0e7490;
+    color: #fff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0c4a6e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#f472b6, #fbbf24);
+    border-radius: 3px;
+}
+
+/* --- LOADING SPLASH SCREEN --- */
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: url('images/principal_kaellen.png') no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    clip-path: circle(150% at 50% 50%);
+}
+
+.splash.closing {
+    clip-path: circle(0% at 50% 50%);
+    pointer-events: none;
+}
+
+.splash-cta {
+    position: absolute;
+    bottom: 40%;
+    /* Positioned above the date "Dia 16/05 às 13h" */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    padding: 14px 36px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: ctaPulse 2s ease infinite;
+    white-space: nowrap;
+}
+
+.splash-cta:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #fff;
+    transform: translateX(-50%) scale(1.05);
+}
+
+.splash-address {
+    position: absolute;
+    bottom: 8px;
+    /* Distance from the bottom of the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: rgba(13, 3, 3, 0.9);
+    font-size: 1.15rem;
+    font-weight: bold;
+    line-height: 1.5;
+    text-shadow: 0 4px 6px rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+@keyframes ctaPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+}
+
+/* --- WATER RIPPLE CANVAS --- */
+#water-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+/* --- CURSOR GLOW --- */
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(103, 232, 249, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.cursor-glow.active {
+    opacity: 1;
+}
+
+/* --- BUBBLES --- */
+.bubbles-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: bubbleRise linear infinite;
+}
+
+@keyframes bubbleRise {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-50vh) translateX(20px) scale(1.05);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-110vh) translateX(-15px) scale(0.9);
+        opacity: 0;
+    }
+}
+
+/* --- MAIN CONTENT --- */
+.main {
+    position: relative;
+    z-index: 5;
+}
+
+/* --- VERTICAL SIDE TEXT --- */
+.side-label {
+    position: fixed;
+    z-index: 20;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    writing-mode: vertical-lr;
+    opacity: 0.4;
+    mix-blend-mode: difference;
+    pointer-events: none;
+}
+
+.side-label.left {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.side-label.right {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 100vh;
+    background: #0891b2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.8;
+    /* Blend with background to keep the teal vibe */
+}
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 145, 178, 0.3) 0%, rgba(14, 116, 144, 0.8) 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Dense bubble texture */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(3px 3px at 10% 15%, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+        radial-gradient(2px 2px at 30% 40%, rgba(255, 255, 255, 0.35) 50%, transparent 100%),
+        radial-gradient(4px 4px at 50% 10%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(2px 2px at 70% 55%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(3px 3px at 85% 22%, rgba(255, 255, 255, 0.45) 50%, transparent 100%),
+        radial-gradient(2px 2px at 15% 75%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(3px 3px at 45% 60%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(2px 2px at 90% 80%, rgba(255, 255, 255, 0.35) 50%, transparent 100%),
+        radial-gradient(3px 3px at 25% 90%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(2px 2px at 60% 78%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: bubbleTextureDrift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes bubbleTextureDrift {
+    0% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-6px);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: translateY(4px);
+        opacity: 0.65;
+    }
+}
+
+
+/* Rotating circular SVG badge */
+.circle-badge {
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    width: 110px;
+    height: 110px;
+    z-index: 3;
+    animation: spinBadge 15s linear infinite;
+}
+
+.circle-badge svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Carrossel de imagens no centro do círculo */
+.circle-badge-carousel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.circle-carousel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.circle-carousel-img.active {
+    opacity: 1;
+}
+
+/* Botão play/pause no topo da tela, acima do círculo */
+.music-toggle-top {
+    position: absolute;
+    top: 1rem;
+    left: 4%;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(14, 116, 144, 0.9);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 10;
+}
+
+.music-toggle-top:hover {
+    background: rgba(14, 116, 144, 1);
+    transform: scale(1.08);
+}
+
+.music-toggle-top.playing .music-icon-pause { display: inline; }
+.music-toggle-top.playing .music-icon-play { display: none; }
+.music-toggle-top.paused .music-icon-pause { display: none; }
+.music-toggle-top.paused .music-icon-play { display: inline; }
+
+.circle-badge text {
+    fill: rgba(255, 255, 255, 0.6);
+    font-family: 'Outfit';
+    font-weight: 800;
+    font-size: 11.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+@keyframes spinBadge {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hero content */
+.hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 20px;
+}
+
+/* "15" number (imagem) */
+.num-15 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    line-height: 0;
+    opacity: 0;
+}
+
+.num-15-img {
+    display: block;
+    height: clamp(26rem, 62vw, 48rem);
+    width: auto;
+    max-width: 90vw;
+    object-fit: contain;
+    margin: 0 auto;
+    filter: drop-shadow(0 10px 35px rgba(251, 191, 36, 0.4));
+    animation: waveFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes waveFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+}
+
+/* "anos da" */
+.anos-da {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(4rem, 8.5vw, 6rem);
+    color: #fef3c7;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    margin-top: -70px;
+    opacity: 0;
+}
+
+/* "KAELLEN" split letters container */
+.name-wrap {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+}
+
+.hero-name {
+    font-size: clamp(4rem, 15vw, 9rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+
+/* Each letter */
+.hero-name .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(60px) rotateX(90deg);
+}
+
+/* Outline layer */
+.name-outline .letter {
+    -webkit-text-stroke: 1px #25e1b5;
+    color: transparent;
+}
+
+/* Fill layer */
+.name-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.name-fill .letter {
+    background: linear-gradient(135deg, #25e1b5, #31e5ac, #1df4e2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transform: translateY(60px) rotateX(90deg);
+}
+
+/* Handwritten annotation */
+.annotation {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 3.8vw, 2.6rem);
+    color: #fbbf24;
+    text-align: center;
+    margin-top: 0.5rem;
+    opacity: 0;
+    z-index: 6;
+    white-space: nowrap;
+}
+
+/* Scroll indicator */
+.scroll-hint {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    z-index: 10;
+}
+
+.scroll-pill {
+    width: 26px;
+    height: 44px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-radius: 13px;
+    margin: 0 auto 6px;
+    position: relative;
+}
+
+.scroll-pill::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    animation: scrollDot 2s ease infinite;
+}
+
+@keyframes scrollDot {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(16px);
+        opacity: 0.2;
+    }
+}
+
+.scroll-hint span {
+    font-size: 0.55rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+/* --- MARQUEE BAR --- */
+.marquee-bar {
+    padding: 14px 0;
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 5;
+}
+
+.marquee-bar.green {
+    background: #0e84a8;
+    color: #fff;
+
+}
+
+.marquee-bar.teal {
+    background: #0e7490;
+    color: #67e8f9;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    padding: 10px 0;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 35px;
+    width: max-content;
+    animation: marqueeScroll 30s linear infinite;
+}
+
+.marquee-track span {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- WAVE DIVIDERS --- */
+.wave-div {
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.wave-div svg {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+    animation: waveDrift 4s ease-in-out infinite;
+}
+
+@keyframes waveDrift {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-25%);
+    }
+}
+
+/* --- INFO SECTION --- */
+.info-section {
+    background: linear-gradient(180deg, #23dfc9 0%, #14a3b6 50%, #0e749039 100%);
+    position: relative;
+    padding: 80px 20px;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.info-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(3px 3px at 12% 20%, rgba(255, 255, 255, 0.6) 50%, transparent 100%),
+        radial-gradient(2px 2px at 35% 45%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(4px 4px at 55% 15%, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+        radial-gradient(2px 2px at 75% 60%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(3px 3px at 88% 30%, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+        radial-gradient(2px 2px at 20% 80%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(3px 3px at 50% 70%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(2px 2px at 80% 85%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+    animation: bubbleTextureDrift 14s ease-in-out infinite alternate-reverse;
+    pointer-events: none;
+}
+
+/* Giant bg text */
+.bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 16vw, 12rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    text-align: center;
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: -3px;
+    opacity: 0;
+}
+
+.bg-text.pink-text {
+    color: rgba(236, 72, 153, 0.1);
+}
+
+.bg-text.yellow-text {
+    color: rgba(245, 158, 11, 0.2);
+}
+
+/* Info grid */
+.info-grid {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+/* Glass card */
+.glass-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-radius: 24px;
+    padding: 32px 28px;
+    text-align: center;
+    color: #831843;
+    transform: translateY(50px);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.card-deco-tentaculo {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    height: 120%;
+    width: auto;
+    opacity: 0.25;
+    pointer-events: none;
+    object-fit: contain;
+    animation: tentaculoFloat 3s ease-in-out infinite;
+}
+
+@keyframes tentaculoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.card-deco-concha {
+    position: absolute;
+    left: -8px;
+    bottom: -8px;
+    width: 70px;
+    height: auto;
+    opacity: 0.5;
+    pointer-events: none;
+    object-fit: contain;
+    animation: conchaFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes conchaFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.card-deco-seahorse {
+    position: absolute;
+    bottom: 5px;
+    height: 77%;
+    width: auto;
+    opacity: 0.25;
+    pointer-events: none;
+    object-fit: contain;
+}
+
+.card-deco-seahorse-left {
+    left: -5px;
+    transform: scaleX(-1);
+    animation: seahorseFloatLeft 3.2s ease-in-out infinite;
+}
+
+.card-deco-seahorse-right {
+    right: -5px;
+    animation: seahorseFloatRight 4.8s ease-in-out infinite;
+}
+
+@keyframes seahorseFloatLeft {
+    0%, 100% { transform: scaleX(-1) translateY(0); }
+    50% { transform: scaleX(-1) translateY(-10px); }
+}
+
+@keyframes seahorseFloatRight {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.card-deco-starfish {
+    position: absolute;
+    left: -10px;
+    bottom: -10px;
+    width: 170px;
+    height: auto;
+    opacity: 0.40;
+    pointer-events: none;
+    object-fit: contain;
+    transform: rotate(35deg);
+}
+
+.card-deco-rose-flower {
+    position: absolute;
+    right: -10px;
+    top: -2px;
+    width: 100px;
+    height: auto;
+    opacity: 0.40;
+    pointer-events: none;
+    object-fit: contain;
+    transform: rotate(35deg);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.42);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-3px) !important;
+}
+
+.glass-card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.glass-card .label {
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 6px;
+    font-weight: 800;
+}
+
+.glass-card .value {
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+.glass-card .value-sm {
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.date-big {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #be185d;
+}
+
+.date-sub {
+    font-size: 1rem;
+    opacity: 0.65;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.msg-card {
+    background: rgba(190, 24, 93, 0.12) !important;
+    border-color: rgba(190, 24, 93, 0.25) !important;
+}
+
+.msg-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.9rem;
+    line-height: 1.4;
+    color: #9d174d;
+}
+
+/* Chuva de frutas – animação contínua dentro do card */
+.fruit-rain {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+}
+
+.msg-card {
+    position: relative;
+}
+
+.msg-text {
+    position: relative;
+    z-index: 1;
+}
+
+.rain-fruit {
+    position: absolute;
+    top: -60px;
+    width: 45px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+.map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #be185d;
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 26px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-top: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(190, 24, 93, 0.35);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 30px rgba(190, 24, 93, 0.5);
+}
+
+@media (min-width: 640px) {
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 700px;
+    }
+
+    .full-w {
+        grid-column: 1 / -1;
+    }
+}
+
+/* --- GIFTS SECTION --- */
+.gifts-section {
+    background: #fbbf24;
+    position: relative;
+    padding: 80px 20px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.gifts-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(3px 3px at 18% 22%, rgba(255, 255, 255, 0.45) 50%, transparent 100%),
+        radial-gradient(2px 2px at 55% 18%, rgba(255, 255, 255, 0.35) 50%, transparent 100%),
+        radial-gradient(3px 3px at 82% 38%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(2px 2px at 35% 72%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(3px 3px at 72% 82%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.gifts-content {
+    position: relative;
+    z-index: 2;
+}
+
+.gifts-icon {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+}
+
+.gifts-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    color: #92400e;
+    margin-bottom: 22px;
+}
+
+.gifts-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.gift-pill {
+    background: rgba(255, 255, 255, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    padding: 11px 22px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #92400e;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.3s ease;
+    cursor: default;
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.gift-pill:hover {
+    background: rgba(255, 255, 255, 0.75);
+    transform: scale(1.06) rotate(-2deg) !important;
+}
+
+/* --- FOOTER --- */
+.footer-section {
+    background: linear-gradient(180deg, #0e7490, #064e3b);
+    padding: 50px 20px 35px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 18% 22%, rgba(255, 255, 255, 0.35) 50%, transparent 100%),
+        radial-gradient(3px 3px at 48% 55%, rgba(255, 255, 255, 0.25) 50%, transparent 100%),
+        radial-gradient(2px 2px at 72% 32%, rgba(255, 255, 255, 0.35) 50%, transparent 100%),
+        radial-gradient(3px 3px at 88% 72%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.footer-hearts {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    animation: heartbeat 2s ease infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.2);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.1);
+    }
+}
+
+.footer-msg {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+    color: #67e8f9;
+    margin-bottom: 6px;
+}
+
+.footer-sub {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.35;
+}
+
+.footer-address {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 20px;
+}
+
+/* --- CONFETTI CANVAS --- */
+#confetti {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+    .side-label {
+        display: none;
+    }
+
+    .music-toggle-top {
+        top: 0.75rem;
+        left: 5%;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .circle-badge {
+        width: 75px;
+        height: 75px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .circle-badge-carousel {
+        width: 36px;
+        height: 36px;
+    }
+
+    .glass-card {
+        padding: 24px 18px;
+    }
+
+    .gift-pill {
+        padding: 9px 16px;
+        font-size: 0.85rem;
+    }
+}

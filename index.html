@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>15 Anos da Kaellen - Festa na Piscina! 🎉</title>
+    <meta name="description"
+        content="Você está convidado(a) para a festa de 15 anos da Kaellen! Festa na piscina, dia 16/05 às 13h.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@400;600;700;800;900&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ===== SPLASH SCREEN ===== -->
+    <div class="splash">
+        <button class="splash-cta">MERGULHE NA FESTA</button>
+        <div class="splash-address">
+            <p>Rua Silvianópolis, 409</p>
+            <p>Conjunto José Bonifácio - SP</p>
+        </div>
+    </div>
+
+    <!-- Water ripple canvas -->
+    <canvas id="water-canvas"></canvas>
+
+    <!-- Cursor glow effect -->
+    <div class="cursor-glow"></div>
+
+    <!-- Floating bubbles -->
+    <div class="bubbles-layer" id="bubbles"></div>
+
+    <!-- Vertical side labels -->
+    <div class="side-label left">Festa na piscina ✦ 16 de maio</div>
+    <div class="side-label right">15 anos ✦ kaellen ✦ 2026</div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main">
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <!-- Video Background -->
+            <video class="hero-video-bg" autoplay muted loop playsinline>
+                <source src="https://v1.pinimg.com/videos/mc/720p/37/92/c9/3792c926101153419cce61a12a134d40.mp4"
+                    type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+
+            <!-- Botão play/pause no topo -->
+            <button type="button" class="music-toggle-top playing" id="music-toggle" aria-label="Pausar música" title="Pausar música">
+                <span class="music-icon music-icon-pause" aria-hidden="true">⏸</span>
+                <span class="music-icon music-icon-play" aria-hidden="true">▶</span>
+            </button>
+
+            <!-- Circular badge -->
+            <div class="circle-badge">
+                <svg viewBox="0 0 100 100">
+                    <defs>
+                        <path id="cp" d="M 50,50 m -39,0 a 39,40 0 1,1 78,0 a 39,39 0 1,1 -78,0" />
+                    </defs>
+                    <text>
+                        <textPath href="#cp">★ POOL ★ PARTY ★ KAELLEN</textPath>
+                    </text>
+                </svg>
+                <div class="circle-badge-carousel">
+                    <img src="images/drop/uellow-orange.png" alt="" class="circle-carousel-img active">
+                    <img src="images/drop/tartaruga.png" alt="" class="circle-carousel-img">
+                    <img src="images/drop/tangerina.png" alt="" class="circle-carousel-img">
+                    <img src="images/drop/red-orange.png" alt="" class="circle-carousel-img">
+                    <img src="images/drop/yellow-orange2.png" alt="" class="circle-carousel-img">
+                    <img src="images/drop/flor.png" alt="" class="circle-carousel-img">
+                    <img src="images/drop/concha2.png" alt="" class="circle-carousel-img">
+                    <img src="images/drop/concha-brilhante.png" alt="" class="circle-carousel-img">
+                </div>
+            </div>
+
+            <!-- Hero content -->
+            <div class="hero-content">
+                <div class="num-15"><img src="images/15_piscina.png" alt="15" class="num-15-img"></div>
+                <div class="anos-da">anos da</div>
+                <div class="name-wrap">
+                    <div class="hero-name name-outline">Kaellen</div>
+                    <div class="hero-name name-fill">Kaellen</div>
+                    <span class="annotation">Aproveite a festa! ↓</span>
+                </div>
+            </div>
+
+            <!-- Scroll hint -->
+            <div class="scroll-hint">
+                <div class="scroll-pill"></div>
+                <span>Deslize</span>
+            </div>
+        </section>
+
+        <!-- Marquee: pink -->
+        <div class="marquee-bar">
+            <div class="marquee-track">
+                <span>🏊‍♀️ FESTA NA PISCINA</span>
+                <span>😊 MUITA DIVERSÃO</span>
+                <span>☀️ DIA DE ALEGRIA</span>
+                <span>🦩 POOL PARTY</span>
+                <span>🎶 MÚSICA BOA</span>
+                <span>🍹 DRINKS GELADOS</span>                
+                <span>🏊‍♀️ FESTA NA PISCINA</span>
+                <span>😊 MUITA DIVERSÃO</span>
+                <span>☀️ DIA DE ALEGRIA</span>
+                <span>🦩 POOL PARTY</span>
+                <span>🎶 MÚSICA BOA</span>
+                <span>🍹 DRINKS GELADOS</span>
+                
+            </div>
+        </div>
+
+        <!-- Wave: teal → pink -->
+        <div class="wave-div">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#23dfc9" d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,30 1440,60 L1440,120 L0,120 Z" />
+            </svg>
+        </div>
+
+        <!-- ===== INFO SECTION ===== -->
+        <section class="info-section" id="info">
+            <div class="bg-text pink-text">VENHA<br>FESTEJAR</div>
+            <div class="info-grid">
+                <div class="glass-card msg-card full-w">
+                    <div class="fruit-rain" aria-hidden="true"></div>
+                    <p class="msg-text">Venha comemorar comigo<br>esta data especial!</p>
+                </div>
+                <div class="glass-card card-date">
+                    <span class="icon">🎉</span>
+                    <div class="label">Data & Hora</div>
+                    <div class="date-big">16/05</div>
+                    <div class="date-sub">Sexta-feira, às 13h</div>
+                    <img src="images/drop/tentaculo.png" alt="" class="card-deco-tentaculo" aria-hidden="true">
+                    <img src="images/drop/concha-perola-top.png" alt="" class="card-deco-concha" aria-hidden="true">
+                </div>
+                <div class="glass-card card-dresscode">
+                    <span class="icon">👙</span>
+                    <div class="label">Sugestão</div>
+                    <div class="value">Traga Roupa de Banho</div>
+                    <div class="value-sm" style="margin-top:4px;">e sua toalha! 🏖️</div>
+                    <img src="images/drop/estrela-brilhante.png" alt="" class="card-deco-starfish" aria-hidden="true">
+                    <img src="images/drop/rosa-top.png" alt="" class="card-deco-rose-flower" aria-hidden="true">
+                </div>
+                <div class="glass-card full-w">
+                    <span class="icon">📍</span>
+                    <div class="label">Local</div>
+                    <div class="value-sm">Rua Silvianópolis, 409<br>Conjunto José Bonifácio - SP</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Rua+Silvianópolis,+409+-+Conjunto+José+Bonifácio+-+SP"
+                        target="_blank" class="map-btn">🌍 Ver no Mapa</a>
+                        <img src="images/drop/cavalo_marinho.png" alt="" class="card-deco-seahorse card-deco-seahorse-left" aria-hidden="true">
+                        <img src="images/drop/cavalo_marinho.png" alt="" class="card-deco-seahorse card-deco-seahorse-right" aria-hidden="true">
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave: pink → yellow -->
+        <div class="wave-div">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#fbbf24" d="M0,80 C240,20 480,100 720,60 C960,20 1200,100 1440,40 L1440,120 L0,120 Z" />
+            </svg>
+        </div>
+
+        <!-- ===== GIFTS ===== -->
+        <section class="gifts-section" id="gifts">
+            <div class="bg-text yellow-text">PRESENTES</div>
+            <div class="gifts-content">
+                <div class="gifts-icon">🎁</div>
+                <div class="gifts-title">Sugestão de Presentes</div>
+                <div class="gifts-list">
+                    <span class="gift-pill">💍 Anéis</span>
+                    <span class="gift-pill">📿 Pulseiras</span>
+                    <span class="gift-pill">🎀 Cintos</span>
+                    <span class="gift-pill">✨ Body Splashs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee: teal ticker -->
+        <div class="marquee-bar teal">
+            <div class="marquee-track">
+                <span>🏊‍♀️ FESTA NA PISCINA</span>
+                <span>☀️ 16 DE MAIO</span>
+                <span>🧭 13 HORAS</span>
+                <span>🎊 KAELLEN, 15 ANOS</span>
+                <span>😊 DIVERSÃO GARANTIDA</span>
+                <span>🍹 POOL PARTY</span>
+                <span>☀️ 16 DE MAIO</span>
+                <span>🧭 13 HORAS</span>
+                <span>🎊 KAELLEN 15 ANOS</span>
+                <span>😊 DIVERSÃO GARANTIDA</span>
+                <span>🏊‍♀️ FESTA NA PISCINA</span>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <section class="footer-section">
+            <div class="footer-hearts">💖🩷💖</div>
+            <div class="footer-msg">Te esperamos com carinho!</div>
+            <div class="footer-sub">Kaellen ✦ 15 Anos ✦ 2026</div>
+        </section>
+
+    </div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti"></canvas>
+
+    <!-- App JS -->
+    <script src="app.js" defer></script>
+
+    <!-- Background Music Player Container -->
+    <div id="player"></div>
+
+</body>
+
+</html>
